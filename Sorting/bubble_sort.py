@@ -24,13 +24,13 @@ strings = ["apple", "banana", "pear", "kiwi", "grape"]
 bubble_sort_by_length(strings)
 print(strings) 
 
-""" a=[5, 4, 3, 7, 8, 9, 1, 2]
+a=[5, 4, 3, 7, 8, 9, 1, 2]
 for j in range(len(a)-1):
     for i in range(len(a)-1-j):
         if a[i]<a[i+1]:
             a[i], a[i+1]=a[i+1], a[i]
     
-print(a) """
+print(a) 
 
 
 

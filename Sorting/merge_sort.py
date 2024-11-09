@@ -2,7 +2,7 @@
 
 # Ascending order
 
-""" def mergesort(list1):
+def mergesort(list1):
     if len(list1)>1:
         mid=len(list1)//2
         left_list=list1[:mid]
@@ -32,7 +32,7 @@
 
 list1=[7, 5, 9, 3, 3, 0, 2, 1, 9, 5]
 mergesort(list1)
-print(list1)     """
+print(list1)     
 
 
 

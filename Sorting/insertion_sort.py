@@ -16,7 +16,7 @@ InsertionSort(list1)
 print(list1)
 
 
-""" my_list=[4,3,6,8,2,1]
+my_list=[4,3,6,8,2,1]
 for i in range(1, len(my_list)):
     c=my_list[i]
     p=i
@@ -26,7 +26,7 @@ for i in range(1, len(my_list)):
     my_list[p]=c
 
 print(my_list)
- """
+
 
 
 def InsertionSort(my_list):

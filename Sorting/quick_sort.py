@@ -4,7 +4,7 @@
 
 
 # to get the correct position of the pivot element
-""" def pivot_place(list1, first, last):
+def pivot_place(list1, first, last):
     pivot=list1[first]
     left=first+1
     right=last
@@ -30,12 +30,12 @@ def quick_sort(list1, first, last):
 list1=[56, 26, 93, 17, 31, 44]
 n=len(list1)
 quick_sort(list1, 0, n-1)
-print(list1)  """
+print(list1)  
 # Ascending and Descending order, Last element as pivot
 
 
 # to get the correct position of the pivot element
-""" def pivot_place(list1, first, last):
+def pivot_place(list1, first, last):
     pivot=list1[last]
     left=first
     right=last-1
@@ -61,13 +61,13 @@ def quick_sort(list1, first, last):
 list1=[56, 26, 93, 17, 31, 44]
 n=len(list1)      
 quick_sort(list1, 0, n-1)
-print(list1) """
+print(list1)
 
 
 # Ascending and Descending order, Random element as pivot
 
 
-""" import random
+import random
 # to get the correct position of the pivot element
 def pivot_place(list1, first, last):
     rindex=random.randint(first, last)
@@ -97,13 +97,13 @@ def quick_sort(list1, first, last):
 list1=[56, 26, 93, 17, 31, 44]
 n=len(list1)      
 quick_sort(list1, 0, n-1)
-print(list1) """
+print(list1) 
 
 
 # Ascending and Descending order, Random element as pivot
 
 
-""" import statistics
+import statistics
 # to get the correct position of the pivot element
 def pivot_place(list1, first, last):
     low=list1[first]
@@ -142,7 +142,7 @@ def quick_sort(list1, first, last):
 list1=[56, 26, 93, 17, 31, 44]
 n=len(list1)      
 quick_sort(list1, 0, n-1)
-print(list1) """
+print(list1) 
 
 
 
@@ -158,7 +158,6 @@ def quick_sort(arr):
     return quick_sort(left)+middle+quick_sort(right)
 
 print(quick_sort(arr)) 
-
 
 
 

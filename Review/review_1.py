@@ -1,3 +1,9 @@
+
+# Reviewer : Emil IS
+
+
+# create linked list , add, traverse, remove duplicates mine is for sorted but he asked for unsorted
+
 class Node:
     def __init__(self, data):
         self.data=data
@@ -35,6 +41,18 @@ LL.add_begin(20)
 LL.remove_duplicates()
 LL.print_LL()
 
+# Do fibanocci in any way 
+
+def fibanocci(n):
+    res=[0, 1]
+    for i in range(2, n+1):
+        end=res[-1]+res[-2]
+        res.append(end)
+    return res
+
+print(fibanocci(6)) 
+
+# Mine is wrong, The output must be in list of fibanoocci series
 
 def fibanocci(n):
 
@@ -49,17 +67,7 @@ n=6
 res=fibanocci(n)
 print(res) 
 
-
-
-def fibanocci(n):
-    res=[0, 1]
-    for i in range(2, n+1):
-        end=res[-1]+res[-2]
-        res.append(end)
-    return res
-
-print(fibanocci(6)) 
-
+# Return the longest substring that not contains vowels
 
 s="orange"
 
@@ -72,7 +80,7 @@ def find_largest_substring(s):
         else:
             c+=" "
     res=c.split()
-    print(res)
+    # print(res)
     m=res[0]
     for i in res:
         if len(i)>len(m):

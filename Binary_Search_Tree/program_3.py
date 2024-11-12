@@ -1,6 +1,6 @@
 
 
-# Insertion
+# Search Operation
 
 class BST:
     def __init__(self, key):
@@ -24,8 +24,23 @@ class BST:
             else:
                 self.rchild=BST(data)
             
+    def search(self, data):
+        if data==self.key:
+            print('Node is found!')
+            return
+        if data<self.key:
+            if self.lchild:
+                self.lchild.search(data)
+            else:
+                print("Node not Found!")
+        else:
+            if self.rchild:
+                self.rchild.search(data)
+            else:
+                print("Node not Found!")
 
 root=BST(10)
-list1=[6, 8, 8, 4, 2, 10, 25]
+list1=[8, 9, 5, 4, 3, 2]
 for i in list1:
     root.insert(i)
+root.search(499)

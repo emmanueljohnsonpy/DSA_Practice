@@ -2,7 +2,6 @@
 
 # Python Program To Implement Binary Search Tree    
 
-
 class BST:
     def __init__(self, key):
         self.key=key

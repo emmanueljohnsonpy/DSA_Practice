@@ -1,4 +1,6 @@
+# Reviewer Hashif
 
+# Stack
 
 class Stack:
     def __init__(self):
@@ -29,6 +31,8 @@ s.pop()
 s.display()
 
 
+# Insertion sort
+
 arr=[64, 34, 25, 12, 22, 11, 90]
 def insertion_sort(arr):
     for i in range(1, len(arr)):
@@ -42,7 +46,7 @@ def insertion_sort(arr):
 
 print(insertion_sort(arr)) 
 
-
+# Merge Sort
 
 arr=[64, 34, 25, 12, 22, 11, 90]
 def merge_sort(arr):

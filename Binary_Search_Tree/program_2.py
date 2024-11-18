@@ -13,7 +13,7 @@ class BST:
             return
         if self.key==data:  # no duplicates
             return
-        if self.key>data:   # dup in left side >=, right side >
+        if self.key>data:   # dup in left side >, right side <
             if self.lchild:
                 self.lchild.insert(data)
             else:

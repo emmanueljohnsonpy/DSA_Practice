@@ -1,75 +1,42 @@
-# Binary Search Tree
 
-class BST:
-    def __init__(self, key):
-        self.key=key
-        self.lchild=None
-        self.rchild=None
 
-    def insert(self, data):
-        if self.key is None:
-            self.key=data
+# Create a Binary Search Tree with insertion, contains, delete, three traversals (postorder, preorder, in order).
+
+
+class Node:
+    def __init__(self, value):
+        self.value=value
+        self.left=None
+        self.right=None
+
+class BinarySearchTree:
+    def __init__(self):
+        self.root=None
+    
+    def insert(self, value):
+        newnode=Node(value)
+        if self.root is None:
+            self.root=newnode
             return
-        if self.key==data:
-            return
-        if self.key>data:
-            if self.lchild:
-                self.lchild.insert(data)
+        current=self.root
+        while True:                                # Now this is for no duplicates in standard BST dup is not allowed (value==current.value)
+            if value<current.value:                # dup to left use <= and don't use elif use else   
+                if current.left is None:
+                    current.left=newnode
+                    return
+                current=current.left
+            elif value>current.value:              # dup to right use >= (else)
+                if current.right is None:
+                    current.right=newnode
+                    return
+                current=current.right
             else:
-                self.lchild=BST(data)
-        else:
-            if self.rchild:
-                self.rchild.insert(data)
-            else:
-                self.rchild=BST(data)
+                return
 
-    def search(self, data):
-        if self.key==data:
-            print("Node is found")
-            return 
-        if data<self.key:
-            if self.lchild:
-                self.lchild.search(data)
-            else:
-                print("Node is not Found")
-        else:
-            if self.rchild:
-                self.rchild.search(data)
-            else:
-                print("Node is not Found")
-    
-    def preorder(self):
-        print(self.key, end=" ")
-        if self.lchild:
-            self.lchild.preorder()
-        if self.rchild:
-            self.rchild.preorder()
-    
-    def inorder(self):
-        if self.lchild:
-            self.lchild.inorder()
-        print(self.key, end=" ")
-        if self.rchild:
-            self.rchild.inorder()
+bst=BinarySearchTree()
 
-    def postorder(self):
-        if self.lchild:
-            self.lchild.postorder()
-        if self.rchild:
-            self.rchild.postorder()
-        print(self.key, end=" ")
-
-    
-        
-
-
-root=BST(10)
-list1=[1,2,3,4,5,6]
-for i in list1:
-    root.insert(i)
-root.search(33)
-root.preorder()
-print()
-root.inorder()
-print()
-root.postorder()
+bst.insert(10)
+bst.insert(20)
+bst.insert(30)
+bst.insert(40)
+bst.insert(50)

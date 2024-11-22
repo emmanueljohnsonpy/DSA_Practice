@@ -151,120 +151,132 @@ print("Is the tree a valid BST?", bst.is_bst(bst.root))
 
 
 
-
-
-
-
 class MinHeap:
     def __init__(self):
         self.heap = []
-    
-    def build_heap(self, array):
-        """Builds a min-heap from an unsorted array."""
-        self.heap = array
-        for i in range(len(array) // 2 - 1, -1, -1):
+
+    def build_heap(self, elements):
+        self.heap = elements[:]
+        for i in range(len(self.heap) // 2 - 1, -1, -1):
             self._heapify_down(i)
-    
+
     def insert(self, val):
-        """Inserts a value into the min-heap."""
         self.heap.append(val)
         self._heapify_up(len(self.heap) - 1)
-    
+
     def remove(self):
-        """Removes and returns the smallest value in the heap."""
         if len(self.heap) == 0:
-            return None
-        if len(self.heap) == 1:
-            return self.heap.pop()
-        
+            raise IndexError("Heap is empty")
         root = self.heap[0]
-        self.heap[0] = self.heap.pop()  # Move the last element to the root
-        self._heapify_down(0)
+        if len(self.heap) > 1:
+            self.heap[0] = self.heap.pop()
+            self._heapify_down(0)
+        else:
+            self.heap.pop()
         return root
-    
+
+    def _heapify_up(self, index):
+        parent = (index - 1) // 2
+        while index > 0 and self.heap[index] < self.heap[parent]:
+            self.heap[index], self.heap[parent] = self.heap[parent], self.heap[index]
+            index = parent
+            parent = (index - 1) // 2
+
     def _heapify_down(self, index):
         smallest = index
         left = 2 * index + 1
         right = 2 * index + 2
-        
+
         if left < len(self.heap) and self.heap[left] < self.heap[smallest]:
             smallest = left
         if right < len(self.heap) and self.heap[right] < self.heap[smallest]:
             smallest = right
-        
+
         if smallest != index:
-            self.heap[smallest], self.heap[index] = self.heap[index], self.heap[smallest]
+            self.heap[index], self.heap[smallest] = self.heap[smallest], self.heap[index]
             self._heapify_down(smallest)
-    
-    def _heapify_up(self, index):
-        parent = (index - 1) // 2
-        if index > 0 and self.heap[index] < self.heap[parent]:
-            self.heap[index], self.heap[parent] = self.heap[parent], self.heap[index]
-            self._heapify_up(parent)
+
+
+# Min Heap
+min_heap = MinHeap()
+min_heap.build_heap([5, 3, 8, 4, 1, 9])
+print("Min Heap:", min_heap.heap)  # Min Heap: [1, 3, 8, 4, 5, 9]
+min_heap.insert(2)
+print("After Insert:", min_heap.heap)  # After Insert: [1, 3, 2, 4, 5, 9, 8]
+print("Removed Element:", min_heap.remove())  # Removed Element: 1
+print("After Remove:", min_heap.heap)  # After Remove: [2, 3, 8, 4, 5, 9]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 class MaxHeap:
     def __init__(self):
         self.heap = []
-    
-    def build_heap(self, array):
-        """Builds a max-heap from an unsorted array."""
-        self.heap = array
-        for i in range(len(array) // 2 - 1, -1, -1):
+
+    def build_heap(self, elements):
+        """Build a max heap from a list of elements."""
+        self.heap = elements[:]
+        for i in range(len(self.heap) // 2 - 1, -1, -1):
             self._heapify_down(i)
-    
+
     def insert(self, val):
-        """Inserts a value into the max-heap."""
+        """Insert an element into the heap."""
         self.heap.append(val)
         self._heapify_up(len(self.heap) - 1)
-    
+
     def remove(self):
-        """Removes and returns the largest value in the heap."""
+        """Remove and return the largest element (root)."""
         if len(self.heap) == 0:
-            return None
-        if len(self.heap) == 1:
-            return self.heap.pop()
-        
+            raise IndexError("Heap is empty")
         root = self.heap[0]
-        self.heap[0] = self.heap.pop()  # Move the last element to the root
-        self._heapify_down(0)
+        if len(self.heap) > 1:
+            self.heap[0] = self.heap.pop()
+            self._heapify_down(0)
+        else:
+            self.heap.pop()
         return root
-    
+
+    def _heapify_up(self, index):
+        """Ensure the heap property by moving an element up."""
+        parent = (index - 1) // 2
+        while index > 0 and self.heap[index] > self.heap[parent]:
+            self.heap[index], self.heap[parent] = self.heap[parent], self.heap[index]
+            index = parent
+            parent = (index - 1) // 2
+
     def _heapify_down(self, index):
+        """Ensure the heap property by moving an element down."""
         largest = index
         left = 2 * index + 1
         right = 2 * index + 2
-        
+
         if left < len(self.heap) and self.heap[left] > self.heap[largest]:
             largest = left
         if right < len(self.heap) and self.heap[right] > self.heap[largest]:
             largest = right
-        
+
         if largest != index:
-            self.heap[largest], self.heap[index] = self.heap[index], self.heap[largest]
+            self.heap[index], self.heap[largest] = self.heap[largest], self.heap[index]
             self._heapify_down(largest)
-    
-    def _heapify_up(self, index):
-        parent = (index - 1) // 2
-        if index > 0 and self.heap[index] > self.heap[parent]:
-            self.heap[index], self.heap[parent] = self.heap[parent], self.heap[index]
-            self._heapify_up(parent)
 
-
-# Example Usage:
-
-# Min Heap
-min_heap = MinHeap()
-min_heap.build_heap([10, 20, 15, 30, 40])
-min_heap.insert(5)
-print("Min Heap:", min_heap.heap)  # [5, 20, 10, 30, 40, 15]
-print("Removed Min:", min_heap.remove())  # 5
-print("After Removal:", min_heap.heap)  # [10, 20, 15, 30, 40]
 
 # Max Heap
 max_heap = MaxHeap()
-max_heap.build_heap([10, 20, 15, 30, 40])
-max_heap.insert(50)
-print("Max Heap:", max_heap.heap)  # [50, 40, 15, 20, 10, 30]
-print("Removed Max:", max_heap.remove())  # 50
-print("After Removal:", max_heap.heap)  # [40, 30, 15, 20, 10]
+max_heap.build_heap([5, 3, 8, 4, 1, 9])
+print("Max Heap:", max_heap.heap)  # Max Heap: [9, 5, 8, 4, 1, 3]
+max_heap.insert(10)
+print("After Insert:", max_heap.heap)  # After Insert: [10, 5, 9, 4, 1, 3, 8]
+print("Removed Element:", max_heap.remove())  # Removed Element: 10
+print("After Remove:", max_heap.heap)  # After Remove: [9, 5, 8, 4, 1, 3]

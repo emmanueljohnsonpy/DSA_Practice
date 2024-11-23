@@ -498,3 +498,4 @@ trie.insert("dot")
 print(trie.search("cat"))  # Output: True
 print(trie.starts_with("ca"))  # Output: True
 print(trie.search("bat"))  # Output: False
+    

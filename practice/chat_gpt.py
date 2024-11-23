@@ -280,3 +280,221 @@ max_heap.insert(10)
 print("After Insert:", max_heap.heap)  # After Insert: [10, 5, 9, 4, 1, 3, 8]
 print("Removed Element:", max_heap.remove())  # Removed Element: 10
 print("After Remove:", max_heap.heap)  # After Remove: [9, 5, 8, 4, 1, 3]
+
+
+
+
+
+
+
+
+
+
+
+
+
+def heapify(arr, n, i):
+    """
+    Heapify a subtree rooted at index i.
+    n is the size of the heap
+    """
+    largest = i  # Initialize largest as root
+    left = 2 * i + 1  # Left child
+    right = 2 * i + 2  # Right child
+
+    # Compare with left child
+    if left < n and arr[left] > arr[largest]:
+        largest = left
+
+    # Compare with right child
+    if right < n and arr[right] > arr[largest]:
+        largest = right
+
+    # If largest is not root
+    if largest != i:
+        arr[i], arr[largest] = arr[largest], arr[i]
+        # Recursively heapify the affected sub-tree
+        heapify(arr, n, largest)
+
+def heap_sort(arr):
+    """
+    Sort array in ascending order using heap sort
+    """
+    n = len(arr)
+
+    # Build max heap
+    for i in range(n // 2 - 1, -1, -1):
+        heapify(arr, n, i)
+
+    # Extract elements from heap one by one
+    for i in range(n - 1, 0, -1):
+        # Move current root to end
+        arr[0], arr[i] = arr[i], arr[0]
+        # Call heapify on reduced heap
+        heapify(arr, i, 0)
+    
+    return arr
+
+# Example usage
+arr = [12, 11, 13, 5, 6, 7]
+sorted_arr = heap_sort(arr.copy())  # Create a copy to preserve original array
+print(f"Original array: {arr}")
+print(f"Sorted array: {sorted_arr}")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def heapify(arr, n, i):
+    """
+    Heapify a subtree rooted at index i.
+    n is the size of the heap
+    Creating a min heap - smallest element at root
+    """
+    smallest = i  # Initialize smallest as root
+    left = 2 * i + 1  # Left child
+    right = 2 * i + 2  # Right child
+
+    # Compare with left child
+    if left < n and arr[left] < arr[smallest]:
+        smallest = left
+
+    # Compare with right child
+    if right < n and arr[right] < arr[smallest]:
+        smallest = right
+
+    # If smallest is not root
+    if smallest != i:
+        arr[i], arr[smallest] = arr[smallest], arr[i]
+        heapify(arr, n, smallest)
+
+def heap_sort_descending(arr):
+    """
+    Sort array in descending order using min heap
+    """
+    n = len(arr)
+
+    # Build min heap
+    for i in range(n // 2 - 1, -1, -1):
+        heapify(arr, n, i)
+
+    # Extract elements from heap one by one
+    for i in range(n - 1, 0, -1):
+        # Move current root (smallest) to end
+        arr[0], arr[i] = arr[i], arr[0]
+        # Call heapify on reduced heap
+        heapify(arr, i, 0)
+    
+    return arr
+
+# Example usage
+arr = [12, 11, 13, 5, 6, 7]
+print("Original array:", arr)
+sorted_arr = heap_sort_descending(arr.copy())
+print("Sorted array (descending):", sorted_arr)
+
+# Another example
+test_arr = [64, 34, 25, 12, 22, 11, 90]
+print("\nOriginal array:", test_arr)
+sorted_arr = heap_sort_descending(test_arr.copy())
+print("Sorted array (descending):", sorted_arr)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class TrieNode:
+    def __init__(self):
+        self.children = {}
+        self.is_end_of_word = False
+
+class Trie:
+    def __init__(self):
+        self.root = TrieNode()
+
+    def insert(self, word):
+        node = self.root
+        for char in word:
+            if char not in node.children:
+                node.children[char] = TrieNode()
+            node = node.children[char]
+        node.is_end_of_word = True
+
+    def search(self, word):
+        node = self.root
+        for char in word:
+            if char not in node.children:
+                return False
+            node = node.children[char]
+        return node.is_end_of_word
+
+    def starts_with(self, prefix):
+        node = self.root
+        for char in prefix:
+            if char not in node.children:
+                return False
+            node = node.children[char]
+        return True
+
+# Example usage:
+trie = Trie()
+trie.insert("cat")
+trie.insert("can")
+trie.insert("car")
+trie.insert("dog")
+trie.insert("dot")
+
+print(trie.search("cat"))  # Output: True
+print(trie.starts_with("ca"))  # Output: True
+print(trie.search("bat"))  # Output: False

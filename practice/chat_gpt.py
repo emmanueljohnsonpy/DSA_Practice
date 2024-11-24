@@ -1,3 +1,5 @@
+from collections import deque
+
 class Node:
     def __init__(self, value):
         self.value = value
@@ -54,7 +56,7 @@ class BinarySearchTree:
                 if not node.left:
                     return node.right
                 elif not node.right:
-                    return node.left
+                    return node.left        
                 temp = find_min(node.right)
                 node.value = temp.value
                 node.right = delete_node(node.right, temp.value)
@@ -103,6 +105,22 @@ class BinarySearchTree:
             return False
         return (self.is_bst(node.left, lower, node.value) and self.is_bst(node.right, node.value, upper))
 
+    def Bfs(self):
+        if not self.root:
+            return []
+        result=[]
+        queue=deque([self.root])
+        while queue:
+            node=queue.popleft()
+            result.append(node.value)
+
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
+        return result
+
+    
 bst = BinarySearchTree()
 
 bst.insert(10)
@@ -136,8 +154,7 @@ print(f"The closest value to {target} is {closest}")
 
 print("Is the tree a valid BST?", bst.is_bst(bst.root))
 
-
-
+print("Breadth first search :", bst.Bfs())
 
 
 
@@ -195,6 +212,12 @@ class MinHeap:
         if smallest != index:
             self.heap[index], self.heap[smallest] = self.heap[smallest], self.heap[index]
             self._heapify_down(smallest)
+    def heap_sort(self):
+        """Sort elements in ascending order."""
+        sorted_list = []
+        while self.heap:
+            sorted_list.append(self.remove())
+        return sorted_list  
 
 
 # Min Heap
@@ -205,7 +228,7 @@ min_heap.insert(2)
 print("After Insert:", min_heap.heap)  # After Insert: [1, 3, 2, 4, 5, 9, 8]
 print("Removed Element:", min_heap.remove())  # Removed Element: 1
 print("After Remove:", min_heap.heap)  # After Remove: [2, 3, 8, 4, 5, 9]
-
+print("Min Heap Sorted Array ", min_heap.heap_sort())
 
 
 
@@ -270,7 +293,12 @@ class MaxHeap:
         if largest != index:
             self.heap[index], self.heap[largest] = self.heap[largest], self.heap[index]
             self._heapify_down(largest)
-
+    def heap_sort(self):
+        """Sort elements in ascending order."""
+        sorted_list = []
+        while self.heap:
+            sorted_list.append(self.remove())
+        return sorted_list[::-1]  # Reverse the list for ascending order
 
 # Max Heap
 max_heap = MaxHeap()
@@ -280,159 +308,7 @@ max_heap.insert(10)
 print("After Insert:", max_heap.heap)  # After Insert: [10, 5, 9, 4, 1, 3, 8]
 print("Removed Element:", max_heap.remove())  # Removed Element: 10
 print("After Remove:", max_heap.heap)  # After Remove: [9, 5, 8, 4, 1, 3]
-
-
-
-
-
-
-
-
-
-
-
-
-
-def heapify(arr, n, i):
-    """
-    Heapify a subtree rooted at index i.
-    n is the size of the heap
-    """
-    largest = i  # Initialize largest as root
-    left = 2 * i + 1  # Left child
-    right = 2 * i + 2  # Right child
-
-    # Compare with left child
-    if left < n and arr[left] > arr[largest]:
-        largest = left
-
-    # Compare with right child
-    if right < n and arr[right] > arr[largest]:
-        largest = right
-
-    # If largest is not root
-    if largest != i:
-        arr[i], arr[largest] = arr[largest], arr[i]
-        # Recursively heapify the affected sub-tree
-        heapify(arr, n, largest)
-
-def heap_sort(arr):
-    """
-    Sort array in ascending order using heap sort
-    """
-    n = len(arr)
-
-    # Build max heap
-    for i in range(n // 2 - 1, -1, -1):
-        heapify(arr, n, i)
-
-    # Extract elements from heap one by one
-    for i in range(n - 1, 0, -1):
-        # Move current root to end
-        arr[0], arr[i] = arr[i], arr[0]
-        # Call heapify on reduced heap
-        heapify(arr, i, 0)
-    
-    return arr
-
-# Example usage
-arr = [12, 11, 13, 5, 6, 7]
-sorted_arr = heap_sort(arr.copy())  # Create a copy to preserve original array
-print(f"Original array: {arr}")
-print(f"Sorted array: {sorted_arr}")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-def heapify(arr, n, i):
-    """
-    Heapify a subtree rooted at index i.
-    n is the size of the heap
-    Creating a min heap - smallest element at root
-    """
-    smallest = i  # Initialize smallest as root
-    left = 2 * i + 1  # Left child
-    right = 2 * i + 2  # Right child
-
-    # Compare with left child
-    if left < n and arr[left] < arr[smallest]:
-        smallest = left
-
-    # Compare with right child
-    if right < n and arr[right] < arr[smallest]:
-        smallest = right
-
-    # If smallest is not root
-    if smallest != i:
-        arr[i], arr[smallest] = arr[smallest], arr[i]
-        heapify(arr, n, smallest)
-
-def heap_sort_descending(arr):
-    """
-    Sort array in descending order using min heap
-    """
-    n = len(arr)
-
-    # Build min heap
-    for i in range(n // 2 - 1, -1, -1):
-        heapify(arr, n, i)
-
-    # Extract elements from heap one by one
-    for i in range(n - 1, 0, -1):
-        # Move current root (smallest) to end
-        arr[0], arr[i] = arr[i], arr[0]
-        # Call heapify on reduced heap
-        heapify(arr, i, 0)
-    
-    return arr
-
-# Example usage
-arr = [12, 11, 13, 5, 6, 7]
-print("Original array:", arr)
-sorted_arr = heap_sort_descending(arr.copy())
-print("Sorted array (descending):", sorted_arr)
-
-# Another example
-test_arr = [64, 34, 25, 12, 22, 11, 90]
-print("\nOriginal array:", test_arr)
-sorted_arr = heap_sort_descending(test_arr.copy())
-print("Sorted array (descending):", sorted_arr)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+print("Sorted Array ", max_heap.heap_sort())
 
 
 
@@ -498,4 +374,3 @@ trie.insert("dot")
 print(trie.search("cat"))  # Output: True
 print(trie.starts_with("ca"))  # Output: True
 print(trie.search("bat"))  # Output: False
-    

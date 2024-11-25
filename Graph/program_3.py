@@ -24,7 +24,7 @@ add_node("A")
 add_node("B")
 add_node("c")
 add_edge("A", "B")
-print(graph) """
+print(graph)  """
 
 # Undirected Weighted Graph
 
@@ -51,7 +51,7 @@ add_node("B")
 add_node("C")
 add_edge("A", "B", 10)
 add_edge("A", "C", 5)
-print(graph) """
+print(graph)  """
 
 # Directed Weighted Graph
 
@@ -82,7 +82,7 @@ print(graph)  """
 
 # Directed Unweighted Graph
 
-def add_node(v):
+""" def add_node(v):
     if v in graph:
         print(v, "is already present in Graph")
     else:
@@ -105,4 +105,4 @@ add_node("B")
 add_node("C")
 add_edge("A", "B")
 add_edge("A", "C")
-print(graph) 
+print(graph)  """

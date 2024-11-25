@@ -4,7 +4,7 @@
 
 # Weighted or Unweighted and Undirected Graph 
 
-""" nodes=[]
+nodes=[]
 graph=[]
 node_count=0
 
@@ -74,7 +74,7 @@ delete_edge("A", "C")
 print("Graph after deleting : ")
 print_graph()
 print("Nodes", nodes)
-print("node_count", node_count) """
+print("node_count", node_count)
 
 # Weighted or Unweighted and Directed Graph 
 

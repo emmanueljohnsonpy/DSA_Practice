@@ -61,7 +61,7 @@ add_edge("E", "D")
 print(graph) 
 delete_edge("C", "D")
 print(graph)
-"""
+ """
 
 # Directed UnWeighted Graph
 
@@ -103,6 +103,15 @@ def delete_edge(v1, v2):
         if v2 in graph[v1]:
             graph[v1].remove(v2)
             # graph[v2].remove(v1)
+def delete_edge(v1, v2):
+    if v1 not in graph:
+        print(v1, "is not present in the Graph")
+    elif v2 not in graph:
+        print(v2, "is not present in the graph")
+    else:
+        if v2 in graph[v1]:
+            graph[v1].remove(v2)
+            # graph[v2].remove(v1)
 
 graph={}
 add_node("A")
@@ -123,7 +132,7 @@ add_edge("G", "D")
 
 print(graph) 
 delete_edge("F", "C")
-print(graph) """
+print(graph)  """
 
 # Undirected Weighted Graph
 
@@ -185,7 +194,7 @@ add_edge("E", "D", 2)
 
 print(graph) 
 delete_edge("C", "D", 1)
-print(graph) """
+print(graph)  """
 
 # Directed Weighted Graph
 

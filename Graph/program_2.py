@@ -4,8 +4,8 @@
 
 # # For Undirected Unweighted Graph
 
-""" 
-def add_node(v):
+
+""" def add_node(v):
     global node_count
     if v in nodes:
         print(v, "is already present in the graph")
@@ -99,11 +99,11 @@ add_edge("A", "D", 20)
 print('After adding Nodes')
 print(nodes)
 print(graph)
-print_graph() """
+print_graph()  """
 
 # For Directed Weighted Graph
-""" 
-def add_node(v):
+
+""" def add_node(v):
     global node_count
     if v in nodes:
         print(v, "is already present in the graph")
@@ -148,11 +148,11 @@ add_edge("A", "D", 20)
 print('After adding Nodes')
 print(nodes)
 print(graph)
-print_graph() """
-
+print_graph() 
+"""
 # For Unweighted Directed Graph 
 
-def add_node(v):
+""" def add_node(v):
     global node_count
     if v in nodes:
         print(v, "is already present in the graph")
@@ -197,4 +197,4 @@ add_edge("A", "D")
 print('After adding Nodes')
 print(nodes)
 print(graph)
-print_graph()
+print_graph() """

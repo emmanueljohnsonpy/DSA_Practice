@@ -4,7 +4,7 @@
 
 # It will work for every type of Graph
 
-""" nodes=[]
+nodes=[]
 graph=[]
 node_count=0
 
@@ -60,5 +60,5 @@ add_edge("A", "B", 10)
 print("Graph after deleting : ")
 delete_node("D")
 print_graph()
-print(nodes) """
+print(nodes) 
 

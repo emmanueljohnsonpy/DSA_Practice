@@ -46,4 +46,4 @@ add_edge("C", "D")
 add_edge("E", "D")
 print(graph)
 
-DFS("k", visited, graph)
+DFS("A", visited, graph)

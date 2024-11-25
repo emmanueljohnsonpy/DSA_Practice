@@ -4,7 +4,7 @@
 
 # Directed and Unweighted Graph
 
-""" def add_node(v):
+def add_node(v):
     if v in graph:
         print(v, "is already present in Graph")
     else:
@@ -38,11 +38,11 @@ add_node("C")
 add_edge("A", "B")
 add_edge("A", "C")
 delete_node("A")
-print(graph)  """
+print(graph) 
 
 # Undirected and Unweighted Graph 
 
-""" def add_node(v):
+def add_node(v):
     if v in graph:
         print(v, "is already present in Graph")
     else:
@@ -76,7 +76,7 @@ add_node("C")
 add_edge("A", "B")
 add_edge("A", "C")
 delete_node("A")
-print(graph)  """
+print(graph)  
 
 # Undirected Weighted Graph
 

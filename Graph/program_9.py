@@ -19,7 +19,7 @@ def add_edge(v1, v2):
         graph[v1].append(v2)
         graph[v2].append(v1) 
 
-""" def DFS(node, visited, graph):
+def DFS(node, visited, graph):
     if node not in graph:
         print("Node is not present in the graph")
         return
@@ -28,7 +28,7 @@ def add_edge(v1, v2):
         visited.add(node)
         for i in graph[node]:
             DFS(i, visited, graph)  # In weighted graph instead of calling i call i[0]
-"""
+
 
 def DFSiterative(node, graph):
     visited=set()

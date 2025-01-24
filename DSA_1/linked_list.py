@@ -1,4 +1,4 @@
-# Construction of Singly linked list & Doubly linked list.
+'Construction of Singly linked list & Doubly linked list.'
 
 class Node:
     def __init__(self, data):

@@ -1,21 +1,21 @@
 "Factorial"
 
-""" def factorial(n):
+def factorial(n):
     if n == 0 or n == 1:
         return 1
     return n * factorial(n - 1)
 
-print(factorial(5)) """
+print(factorial(5))
 
 
 "Fibonacci"
 
-""" def fibonacii(n):
+def fibonacii(n):
     if n <= 1:
         return n
     return fibonacii(n - 1) + fibonacii(n - 2)
 
-print(fibonacii(6)) """
+print(fibonacii(6))
 
 
 "Sum of digits"

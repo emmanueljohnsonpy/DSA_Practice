@@ -115,8 +115,22 @@ class SinglyLinkedList:
                 current.next = current.next.next
             else:
                 current = current.next
-            
     
+    def remove_duplicates_unsorted(self):
+        if self.head is None:
+            print("Linked List is empty")
+            return
+        seen = set()
+        current = self.head
+        seen.add(current.data)
+        while current.next:
+            if current.next.data in seen:
+                current.next = current.next.next
+            else:
+                current = current.next
+                seen.add(current.data)
+                
+
 ssl = SinglyLinkedList()
 ssl.insert_at_end(10)
 ssl.insert_at_end(20)
@@ -125,22 +139,5 @@ ssl.insert_at_end(20)
 ssl.insert_at_end(30)
 ssl.display()
 
-ssl.remove_duplicates_sorted()
+ssl.remove_duplicates_unsorted()
 ssl.display()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

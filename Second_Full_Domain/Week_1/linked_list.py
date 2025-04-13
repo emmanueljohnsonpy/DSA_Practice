@@ -129,15 +129,24 @@ class SinglyLinkedList:
             else:
                 current = current.next
                 seen.add(current.data)
+        
+    def reverse_a_singly_linked_list(self):
+        prev = None
+        current = self.head
+        while current:
+            nextnode = current.next
+            current.next = prev
+            prev = current
+            current = nextnode
+        self.head = prev
                 
 
 ssl = SinglyLinkedList()
 ssl.insert_at_end(10)
 ssl.insert_at_end(20)
-ssl.insert_at_end(20)
-ssl.insert_at_end(20)
 ssl.insert_at_end(30)
+ssl.insert_at_end(40)
+ssl.insert_at_end(50)
 ssl.display()
-
-ssl.remove_duplicates_unsorted()
+ssl.reverse_a_singly_linked_list()
 ssl.display()

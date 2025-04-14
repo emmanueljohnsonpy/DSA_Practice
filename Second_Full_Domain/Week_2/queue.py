@@ -49,3 +49,75 @@ q.dequeue()
 q.display()
 
 q.peek()
+
+
+
+
+# Queue using Linked List
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+    
+class Queue:
+    def __init__(self):
+        self.front = self.rear = None
+        
+    def enqueue(self, data):
+        newnode = Node(data)
+        if self.front is None:
+            self.front = self.rear = newnode
+        else:
+            self.rear.next = newnode
+            self.rear = newnode
+        print(f"{data} is enqueued to Queue")
+    
+    def dequeue(self):
+        if self.front is None:
+            print("Queue is empty, cannot dequeue")
+        else:
+            item = self.front.data
+            self.front = self.front.next
+            if self.front is None:
+                self.rear = None
+            print(f"{item} dequeued from Queue")
+        
+    def display(self):
+        if self.front is None:
+            print("Queue is empty")
+            return
+        current = self.front
+        while current:
+            print(current.data, end = " ")
+            current = current.next
+        print()
+        
+q = Queue()
+
+q.enqueue(10)
+q.enqueue(20)
+q.enqueue(30)
+
+q.display()
+
+q.dequeue()
+q.dequeue()
+q.dequeue()
+q.dequeue()
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+            
